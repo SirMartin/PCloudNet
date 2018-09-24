@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using PCloudNet.Helpers;
 
 namespace PCloudNet
 {
@@ -52,14 +53,14 @@ namespace PCloudNet
                     if (string.IsNullOrEmpty(AuthToken))
                     {
                         // Make login.
-                        GetUserInfo();
+                        LogIn();
                     }
 
                     parameters.Add(new KeyValuePair<string, string>("auth", AuthToken));
                 }
 
                 // Convert the parameters to URL.
-                var parametersUrl = ConvertParametersToUrl(parameters);
+                var parametersUrl = ParametersHelper.ConvertParametersToUrl(parameters);
 
                 var url = $"{BaseUrl}/{urlSegment}?{parametersUrl}";
 
@@ -89,14 +90,14 @@ namespace PCloudNet
                     if (string.IsNullOrEmpty(AuthToken))
                     {
                         // Make login.
-                        GetUserInfo();
+                        LogIn();
                     }
 
                     parameters.Add(new KeyValuePair<string, string>("auth", AuthToken));
                 }
 
                 // Convert the parameters to URL.
-                var parametersUrl = ConvertParametersToUrl(parameters);
+                var parametersUrl = ParametersHelper.ConvertParametersToUrl(parameters);
 
                 var url = $"{BaseUrl}/{urlSegment}?{parametersUrl}";
 
@@ -113,22 +114,6 @@ namespace PCloudNet
                 // Logger.Error("Fail while executing this urlSegment: " + urlSegment, ex);
                 return default(T);
             }
-        }
-
-        private string ConvertParametersToUrl(List<KeyValuePair<string, string>> parameters)
-        {
-            var url = string.Empty;
-            foreach (var parameter in parameters)
-            {
-                if (!string.IsNullOrEmpty(url))
-                {
-                    url = url + "&";
-                }
-
-                url = url + string.Format("{0}={1}", parameter.Key, parameter.Value);
-            }
-
-            return url;
         }
     }
 }
