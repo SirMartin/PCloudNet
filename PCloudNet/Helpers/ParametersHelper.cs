@@ -29,7 +29,7 @@ namespace PCloudNet.Helpers
 
             var parameters = new List<KeyValuePair<string, string>>();
 
-            if (string.IsNullOrEmpty(path))
+            if (!string.IsNullOrEmpty(path))
             {
                 parameters.Add(new KeyValuePair<string, string>("path", WebUtility.UrlEncode(path)));
             }
@@ -48,7 +48,7 @@ namespace PCloudNet.Helpers
 
             var parameters = new List<KeyValuePair<string, string>>();
 
-            if (string.IsNullOrEmpty(path))
+            if (!string.IsNullOrEmpty(path))
             {
                 parameters.Add(new KeyValuePair<string, string>("path", WebUtility.UrlEncode(path)));
             }
