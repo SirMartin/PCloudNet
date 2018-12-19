@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using PCloudNet.Helpers;
-using PCloudNet.Models;
+using PCloudNet.Models.Streaming;
 
 namespace PCloudNet
 {
     public partial class PCloud
     {
         #region GetStreamFileLink
+
+        private const string GetFileLinkUrl = "getfilelink";
 
         private List<KeyValuePair<string, string>> CreateParametersGetFileLink(string path = null, long? fileId = null, bool forceDownload = false,
             string contentType = null, int? maxSpeed = null, int? skipFileName = null)
@@ -51,7 +53,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetFileLink(null, fileId, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return ExecuteAsync<FileLink>("getfilelink", parameters);
+            return ExecuteAsync<FileLink>(GetFileLinkUrl, parameters);
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetFileLink(path, null, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return ExecuteAsync<FileLink>("getfilelink", parameters);
+            return ExecuteAsync<FileLink>(GetFileLinkUrl, parameters);
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetFileLink(null, fileId, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return Execute<FileLink>("getfilelink", parameters);
+            return Execute<FileLink>(GetFileLinkUrl, parameters);
         }
 
         /// <summary>
@@ -111,12 +113,14 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetFileLink(path, null, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return Execute<FileLink>("getfilelink", parameters);
+            return Execute<FileLink>(GetFileLinkUrl, parameters);
         }
 
         #endregion
 
         #region GetVideoStreamFileLink
+
+        private const string GetVideoLinkUrl = "getvideolink";
 
         private List<KeyValuePair<string, string>> CreateParametersGetVideoStreamFileLink(string path, long? fileId, bool forceDownload = false,
             string contentType = null, int? maxSpeed = null, int? skipFileName = null, int abitrate = 128,
@@ -174,7 +178,7 @@ namespace PCloudNet
             var parameters = CreateParametersGetVideoStreamFileLink(null, fileId, forceDownload, contentType, maxSpeed,
                 skipFileName, abitrate, vbitrate, resolution, fixedbitrate);
 
-            return ExecuteAsync<FileLink>("getvideolink", parameters);
+            return ExecuteAsync<FileLink>(GetVideoLinkUrl, parameters);
         }
 
         /// <summary>
@@ -205,7 +209,7 @@ namespace PCloudNet
             var parameters = CreateParametersGetVideoStreamFileLink(path, null, forceDownload, contentType, maxSpeed,
                 skipFileName, abitrate, vbitrate, resolution, fixedbitrate);
 
-            return ExecuteAsync<FileLink>("getvideolink", parameters);
+            return ExecuteAsync<FileLink>(GetVideoLinkUrl, parameters);
         }
 
         /// <summary>
@@ -236,7 +240,7 @@ namespace PCloudNet
             var parameters = CreateParametersGetVideoStreamFileLink(null, fileId, forceDownload, contentType, maxSpeed,
                 skipFileName, abitrate, vbitrate, resolution, fixedbitrate);
 
-            return Execute<FileLink>("getvideolink", parameters);
+            return Execute<FileLink>(GetVideoLinkUrl, parameters);
         }
 
         /// <summary>
@@ -267,13 +271,15 @@ namespace PCloudNet
             var parameters = CreateParametersGetVideoStreamFileLink(path, null, forceDownload, contentType, maxSpeed,
                 skipFileName, abitrate, vbitrate, resolution, fixedbitrate);
 
-            return Execute<FileLink>("getvideolink", parameters);
+            return Execute<FileLink>(GetVideoLinkUrl, parameters);
         }
 
 
         #endregion
 
         #region GetVideoLinks
+
+        private const string GetVideoLinksUrl = "getvideolinks";
 
         private List<KeyValuePair<string, string>> CreateParametersGetVideoLinks(string path = null, long? fileId = null, bool forceDownload = false,
             string contentType = null, int? maxSpeed = null, int? skipFileName = null)
@@ -314,7 +320,7 @@ namespace PCloudNet
             var parameters =
                 CreateParametersGetVideoLinks(null, fileId, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return ExecuteAsync<VideoLinks>("getvideolinks", parameters);
+            return ExecuteAsync<VideoLinks>(GetVideoLinksUrl, parameters);
         }
 
         /// <summary>
@@ -334,7 +340,7 @@ namespace PCloudNet
             var parameters =
                 CreateParametersGetVideoLinks(path, null, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return ExecuteAsync<VideoLinks>("getvideolinks", parameters);
+            return ExecuteAsync<VideoLinks>(GetVideoLinksUrl, parameters);
         }
 
         /// <summary>
@@ -354,7 +360,7 @@ namespace PCloudNet
             var parameters =
                 CreateParametersGetVideoLinks(null, fileId, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return Execute<VideoLinks>("getvideolinks", parameters);
+            return Execute<VideoLinks>(GetVideoLinksUrl, parameters);
         }
 
         /// <summary>
@@ -374,7 +380,7 @@ namespace PCloudNet
             var parameters =
                 CreateParametersGetVideoLinks(path, null, forceDownload, contentType, maxSpeed, skipFileName);
 
-            return Execute<VideoLinks>("getvideolinks", parameters);
+            return Execute<VideoLinks>(GetVideoLinksUrl, parameters);
         }
 
         #endregion

@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using PCloudNet.Helpers;
-using PCloudNet.Models;
+using PCloudNet.Models.Thumbnails;
 
 namespace PCloudNet
 {
     public partial class PCloud
     {
         #region GetThumbLink
+
+        private const string GetThumbLinkUrl = "getthumblink";
 
         private List<KeyValuePair<string, string>> CreateParametersGetThumbLink(string path, long? fileId, int width, int height, bool crop = false, string type = null)
         {
@@ -43,7 +45,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetThumbLink(path, null, width, height, crop, type);
 
-            return ExecuteAsync<Thumbnail>("getthumblink", parameters);
+            return ExecuteAsync<Thumbnail>(GetThumbLinkUrl, parameters);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetThumbLink(null, fileId, width, height, crop, type);
 
-            return ExecuteAsync<Thumbnail>("getthumblink", parameters);
+            return ExecuteAsync<Thumbnail>(GetThumbLinkUrl, parameters);
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetThumbLink(path, null, width, height, crop, type);
 
-            return Execute<Thumbnail>("getthumblink", parameters);
+            return Execute<Thumbnail>(GetThumbLinkUrl, parameters);
         }
 
         /// <summary>
@@ -103,7 +105,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersGetThumbLink(null, fileId, width, height, crop, type);
 
-            return Execute<Thumbnail>("getthumblink", parameters);
+            return Execute<Thumbnail>(GetThumbLinkUrl, parameters);
         }
 
         #endregion

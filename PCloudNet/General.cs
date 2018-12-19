@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using PCloudNet.Models;
+using PCloudNet.Models.General;
 
 namespace PCloudNet
 {
     public partial class PCloud
     {
         #region LogIn
+
+        private const string UserInfoUrl = "userinfo";
 
         private List<KeyValuePair<string, string>> CreateParametersUserInfo(string username, string password, bool getAuth)
         {
@@ -27,11 +29,11 @@ namespace PCloudNet
         /// this is an especially good place for logging in with no particular action in mind.
         /// </summary>
         /// <returns>The user information.</returns>
-        private UserInfo LogIn()
+        public UserInfo LogIn()
         {
             var parameters = CreateParametersUserInfo(_username, _password, true);
 
-            var result = Execute<UserInfo>("userinfo", parameters, false);
+            var result = Execute<UserInfo>(UserInfoUrl, parameters, false);
 
             AuthToken = result.Auth;
 
@@ -53,7 +55,7 @@ namespace PCloudNet
         {
             var parameters = CreateParametersUserInfo(_username, _password, true);
 
-            return ExecuteAsync<UserInfo>("userinfo", parameters);
+            return ExecuteAsync<UserInfo>(UserInfoUrl, parameters);
         }
 
         /// <summary>
@@ -67,7 +69,7 @@ namespace PCloudNet
         {
             var parameters = CreateParametersUserInfo(_username, _password, true);
 
-            return Execute<UserInfo>("userinfo", parameters);
+            return Execute<UserInfo>(UserInfoUrl, parameters);
         }
 
         #endregion

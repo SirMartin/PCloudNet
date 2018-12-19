@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PCloudNet.Models
+namespace PCloudNet.Models.Streaming
 {
     public class VideoLinks
     {

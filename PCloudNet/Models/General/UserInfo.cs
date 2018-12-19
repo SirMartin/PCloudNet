@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PCloudNet.Models
+namespace PCloudNet.Models.General
 {
     public class UserInfo : PCloudAuth
     {

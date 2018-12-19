@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using PCloudNet.Helpers;
-using PCloudNet.Models;
+using PCloudNet.Models.Folder;
 
 namespace PCloudNet
 {
@@ -11,6 +11,8 @@ namespace PCloudNet
     {
 
         #region ListFolder
+
+        private const string ListFolderUrl = "listfolder";
 
         private List<KeyValuePair<string, string>> CreateParametersListFolder(string path, long? folderId, bool recursive = false,
             bool showDeleted = false, bool noFiles = false, bool noShares = false)
@@ -45,7 +47,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersListFolder(path, null, recursive, showDeleted, noFiles, noShares);
 
-            return ExecuteAsync<ListFolder>("listfolder", parameters);
+            return ExecuteAsync<ListFolder>(ListFolderUrl, parameters);
         }
 
         /// <summary>
@@ -68,7 +70,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersListFolder(null, folderId, recursive, showDeleted, noFiles, noShares);
 
-            return ExecuteAsync<ListFolder>("listfolder", parameters);
+            return ExecuteAsync<ListFolder>(ListFolderUrl, parameters);
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersListFolder(path, null, recursive, showDeleted, noFiles, noShares);
 
-            return Execute<ListFolder>("listfolder", parameters);
+            return Execute<ListFolder>(ListFolderUrl, parameters);
         }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace PCloudNet
 
             var parameters = CreateParametersListFolder(null, folderId, recursive, showDeleted, noFiles, noShares);
 
-            return Execute<ListFolder>("listfolder", parameters);
+            return Execute<ListFolder>(ListFolderUrl, parameters);
         }
 
         #endregion

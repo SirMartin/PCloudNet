@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace PCloudNet.Models
+namespace PCloudNet.Models.Thumbnails
 {
     public class Thumbnail
     {
